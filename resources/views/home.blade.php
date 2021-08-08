@@ -17,6 +17,31 @@
                     {{ __('You are logged in!') }}
                 </div>
             </div>
+            @php
+                $notifications = auth()->user()->notifications;
+            @endphp
+            <div class="card">
+                <div class="card-body">
+                    <table class="table-responsive">
+                        <thead>
+                            <tr>
+                                <th>Notify</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach ($notifications as $noti)
+                                <tr>
+                                    {{-- <td>{{ $item->type }}</td> --}}
+                                    <td>
+                                        @include('notifications'.Str::snake(class_basename($noti->type)))
+                                    </td>
+                                </tr>
+                            @endforeach
+                            
+                        </tbody>
+                    </table>
+                </div>
+            </div>
         </div>
     </div>
 </div>
