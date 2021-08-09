@@ -29,11 +29,11 @@
                             </tr>
                         </thead>
                         <tbody>
-                            @foreach ($notifications as $noti)
+                            @foreach ($notifications as $key => $notification)
                                 <tr>
                                     {{-- <td>{{ $item->type }}</td> --}}
                                     <td>
-                                        @include('notifications'.Str::snake(class_basename($noti->type)))
+                                        {{ $key }}.@include('notifications.'.Str::snake(class_basename($notification->type)))
                                     </td>
                                 </tr>
                             @endforeach
